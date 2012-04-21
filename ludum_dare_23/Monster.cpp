@@ -69,7 +69,7 @@ void UpAndDown(Monster* mon)
 		//first stage. move up
 		//we'll stop by chance
 		randNum = rand() % 10 + 1;
-		if(randNum >= 8 || mon->pos.y >= REZ_Y)
+		if(randNum >= 8 || mon->pos.y <= 0)
 		{
 			//moves to the next stage
 			mon->stages[0] = false;
@@ -83,7 +83,7 @@ void UpAndDown(Monster* mon)
 	if(mon->stages[1])
 	{
 		randNum = rand() % 10 +1;
-		if(randNum <= 6 || mon->pos.y <= 0)
+		if(randNum <= 8 || mon->pos.y >= REZ_Y)
 		{
 			//move to a different action
 			mon->resetStages();
@@ -91,7 +91,7 @@ void UpAndDown(Monster* mon)
 		}
 		else
 		{
-			mon->ay += 0.5;
+			mon->ay += 0.8;
 		}
 	}
 
