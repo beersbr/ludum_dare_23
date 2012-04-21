@@ -72,6 +72,7 @@ int main()
 			p->ax += 0.8;
 		}
 
+		// the warden iterations would go here
 		p->Update();
 		p->Draw(&App);
 
