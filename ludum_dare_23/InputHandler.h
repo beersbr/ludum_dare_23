@@ -17,5 +17,4 @@ private:
 
 	static InputHandler *_instance;
 	std::map<sf::Key::Code, int> keys;
-
 };

@@ -8,8 +8,8 @@
 
 int main()
 {
-	sf::RenderWindow App(sf::VideoMode(800, 600, 32), "test");
-	App.SetFramerateLimit(60);
+	sf::RenderWindow App(sf::VideoMode(REZ_X, REZ_Y, 32), WINDOW_TITLE);
+	App.SetFramerateLimit(FRAME_LIMIT);
 
 	sf::Event game_event;
 

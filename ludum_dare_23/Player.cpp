@@ -13,6 +13,8 @@ Player::~Player(void)
 
 int Player::Draw(sf::RenderTarget *rt) const
 {
+	sf::Shape r;
+
 	return 0;
 }
 
