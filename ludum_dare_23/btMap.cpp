@@ -94,14 +94,14 @@ void getLeafNodes(MapNode* rootNode, std::vector<MapNode*>* leaves)
 
 
 //Generates a random map and returns the root node of said map
-void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms)
+void generateMapHelper(MapNode* curNode, int curDepth, int maxDepth)
 {
 	MapNode* tmpLeft;
 	MapNode* tmpRight;
 	//Root of this node, <parent> BETTER BE FUCKIN' NULL
 	//Lets edit the block that represents this node..
 
-	if(curRooms > maxRooms)
+	if(curDepth >= maxDepth)
 	{
 		return;
 	}
@@ -116,6 +116,13 @@ void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms)
 	curDir = rand() % 2; //current direction.. 0 = horizontal, 1 = vertical;
 	randPos.x = rand() % MAX_X_SIZE + 1;
 	randPos.y = rand() % MAX_Y_SIZE + 1;
+
+
+	while(MAX_X_SIZE - randPos.x < 5 || MAX_Y_SIZE - randPos.y < 5)
+	{
+		randPos.x = rand() % MAX_X_SIZE + 1;
+		randPos.y = rand() % MAX_Y_SIZE + 1;
+	}
 
 	//split and add nodes
 	tmpLeft = new MapNode();
@@ -157,8 +164,8 @@ void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms)
 	curNode->left = tmpLeft;
 	curNode->right = tmpRight;
 	//left
-	generateMapHelper(curNode->left, curRooms + 2, maxRooms /2);
-	generateMapHelper(curNode->right, curRooms + 2, maxRooms /2);	
+	generateMapHelper(curNode->left, curDepth+1, maxDepth);
+	generateMapHelper(curNode->right, curDepth+1, maxDepth);	
 }
 
 //Flatten out the Map file.

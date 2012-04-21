@@ -9,6 +9,7 @@ Entity::Entity(Entity &entity)
 {
 	this->pos.x = entity.pos.x;
 	this->pos.y = entity.pos.y;
+	this->spriteHandle = entity.spriteHandle;
 }
 
 Entity::Entity(double x, double y)

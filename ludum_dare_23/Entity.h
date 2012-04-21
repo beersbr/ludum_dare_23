@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector.h"
+#include "SpriteHandler.h"
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -17,6 +18,7 @@ public:
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
 	virtual int Update(void ) = 0;
 
+	SpriteHandler* spriteHandle;
 	Vector2D pos;
 };
 
