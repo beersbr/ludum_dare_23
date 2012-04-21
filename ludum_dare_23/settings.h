@@ -1,5 +1,4 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,4 +11,3 @@ const int Y_TILE_SIZE = 40;
 
 enum GAME_STATE{RUNNING, PAUSED, STOPPED, LOADING};
 
-#endif
