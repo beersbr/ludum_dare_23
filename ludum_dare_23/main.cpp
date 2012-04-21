@@ -16,7 +16,7 @@ int main()
 	InputHandler *input = InputHandler::instance();
 	GAME_STATE GameState = RUNNING;
 
-	Player *p = new Player();
+	Player *p = new Player(500, 500);
 
 	while(GameState)
 	{
