@@ -3,6 +3,7 @@
 Warden* Warden::_instance = NULL;
 std::map<std::string, sf::Image> Warden::images;
 std::map<std::string, sf::Sound> Warden::sounds;
+std::map<std::string, Entity *> Warden::entities;
 
 Warden *Warden::instance()
 {

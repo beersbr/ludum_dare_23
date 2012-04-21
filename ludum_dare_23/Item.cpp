@@ -16,3 +16,15 @@ Item::~Item(void)
 {
 }
 
+
+
+int Item::Update()
+{
+	return 1;
+}
+
+
+int Item::Draw(sf::RenderTarget *rt) const
+{
+	return 1;
+}

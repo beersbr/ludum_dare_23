@@ -28,7 +28,7 @@ Monster::~Monster(void)
 int Monster::Draw(sf::RenderTarget * rt) const
 {
 	sf::Sprite sp; 
-	sp.SetImage(*this->img);
+	//sp.SetImage(*this->img);
 	sp.SetX(static_cast<float>(this->pos.x));
 	sp.SetY(static_cast<float>(this->pos.y));
 	sp.Rotate(static_cast<float>(this->curRotation));
@@ -41,6 +41,7 @@ int Monster::Update()
 {
 	//Keep calling the current actions, they'll pass eachother off.
 	this->currentAction();
+	return 1;
 }
 
 void UpAndDown()
