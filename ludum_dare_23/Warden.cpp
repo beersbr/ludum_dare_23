@@ -67,3 +67,14 @@ int Warden::UpdateAll()
 	}
 	return 1;
 }
+
+int Warden::CheckCollisionAll()
+{
+	std::vector<Entity *>::iterator itr = this->entities.begin();
+	std::vector<Entity *> temp;
+
+	for(itr; itr != this->entities.end(); itr++)
+	{
+
+	}
+}

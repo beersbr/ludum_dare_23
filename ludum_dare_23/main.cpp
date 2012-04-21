@@ -25,6 +25,7 @@ int main()
 	
 	//Seed that random generator
 	srand(time(NULL));
+	// What does ^ do?
 
 	InputHandler *input = InputHandler::instance();
 	Warden *warden = Warden::instance();
@@ -67,7 +68,6 @@ int main()
 
 		if(input->KeyIsDown(sf::Key::W))
 		{
-			// the 0.8 would be changed to some variable named power maybe
 			p->ay -= 0.8;
 		}
 		if(input->KeyIsDown(sf::Key::S))
@@ -82,13 +82,6 @@ int main()
 		{
 			p->ax += 0.8;
 		}
-
-		// the warden iterations would go here
-		/*p->Update();
-		p->Draw(&App);
-
-		m->Update();
-		m->Draw(&App);*/
 
 		warden->UpdateAll();
 		warden->DrawAll(&App);

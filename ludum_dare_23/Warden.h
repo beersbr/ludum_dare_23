@@ -26,6 +26,7 @@ public:
 	sf::Image *GetImage(std::string id);
 	int GetSound(std::string id);
 
+	int CheckCollisionAll();
 	int DrawAll(sf::RenderTarget *rt);
 	int UpdateAll();
 
