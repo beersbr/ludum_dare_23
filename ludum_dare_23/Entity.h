@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector.h"
+#include "SpriteHandler.h"
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -18,5 +19,6 @@ public:
 	virtual int Update(void ) = 0;
 
 	Vector2D pos;
+	SpriteHandler *sprite;
 };
 

@@ -14,7 +14,6 @@ Player::~Player(void)
 
 int Player::Draw(sf::RenderTarget *rt) const
 {
-
 	sf::Sprite sp; 
 	sp.SetImage(*this->img);
 	sp.SetX(static_cast<float>(this->pos.x));

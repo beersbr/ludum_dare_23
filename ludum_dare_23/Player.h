@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SpriteHandler.h"
 #include "settings.h"
 #include "Entity.h"
 
@@ -16,6 +17,6 @@ public:
 	int Update(void );
 
 	double ax, ay, friction;
-	sf::Image *img;
+	SpriteHandler *sp;	
 };
 
