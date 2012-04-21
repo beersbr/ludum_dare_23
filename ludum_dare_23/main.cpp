@@ -10,6 +10,10 @@
 #include <iostream>
 #include <fstream>
 
+#if DEBUG
+#include <d
+#endif
+
 int main()
 {
 	sf::RenderWindow App(sf::VideoMode(REZ_X, REZ_Y, 32), WINDOW_TITLE);
@@ -50,9 +54,29 @@ int main()
 			GameState = STOPPED;
 		}
 
+		if(input->KeyIsDown(sf::Key::W))
+		{
+			// the 0.8 would be changed to some variable named power maybe
+			p->ay -= 0.8;
+		}
+		if(input->KeyIsDown(sf::Key::S))
+		{
+			p->ay += 0.8;
+		}
+		if(input->KeyIsDown(sf::Key::A))
+		{
+			p->ax -= 0.8;
+		}
+		if(input->KeyIsDown(sf::Key::D))
+		{
+			p->ax += 0.8;
+		}
+
+		p->Update();
 		p->Draw(&App);
 
 		App.Display();
+		App.Clear();
 	}
 
 	return EXIT_SUCCESS;

@@ -27,12 +27,7 @@ Monster::~Monster(void)
 
 int Monster::Draw(sf::RenderTarget * rt) const
 {
-	sf::Sprite sp; 
-	sp.SetImage(*this->img);
-	sp.SetX(static_cast<float>(this->pos.x));
-	sp.SetY(static_cast<float>(this->pos.y));
-	sp.Rotate(static_cast<float>(this->curRotation));
-	rt->Draw(sp);
+	//rt->Draw(th);
 
 	return 0;
 }
@@ -40,8 +35,8 @@ int Monster::Draw(sf::RenderTarget * rt) const
 int Monster::Update()
 {
 	//Keep calling the current actions, they'll pass eachother off.
-	this->*currentAction();
-
+	//this->*currentAction();
+	return 0;
 }
 
 //Need to figure out when stages reset
