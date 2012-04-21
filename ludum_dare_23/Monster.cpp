@@ -9,12 +9,16 @@ Monster::Monster(void)
 
 Monster::Monster(double x, double y): Entity(x, y)
 {
-	this->friction = 0.88;
-	this->sprite = new SpriteHandler();
+	Init();
+	this->currentAction = this->actions[0];
 }
 
 void Monster::Init()
 {
+
+	this->friction = 0.88;
+	this->sprite = new SpriteHandler();
+
 	//Set the actions;
 	actions[0] = &UpAndDown;
 	actions[1] = &LeftAndRight;
