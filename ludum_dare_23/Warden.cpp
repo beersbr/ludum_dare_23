@@ -91,6 +91,6 @@ int Warden::CheckCollisionAll()
 
 	for(itr; itr != this->entities.end(); itr++)
 	{
-
+		
 	}
 }

@@ -4,12 +4,14 @@ Player::Player(void)
 {
 	this->friction = 0.88;
 	this->sprite = new SpriteHandler();
+	this->type = PLAYER;
 }
 
 Player::Player(double x, double y):Entity(x, y)
 {
 	this->friction = 0.88;
 	this->sprite = new SpriteHandler();
+	this->type = PLAYER;
 }
 
 Player::~Player(void)

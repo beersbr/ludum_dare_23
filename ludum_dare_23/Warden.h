@@ -41,4 +41,5 @@ private:
 	static std::map<std::string, sf::Image> images;
 	static std::map<std::string, sf::Sound> sounds;
 	static std::vector<Entity *> entities;
+	std::vector<Entity *> acts_on_collision;
 };

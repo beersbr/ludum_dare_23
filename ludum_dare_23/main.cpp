@@ -33,10 +33,6 @@ int main()
 	sf::Event game_event;
 	GAME_STATE GameState = RUNNING;
 
-
-
-
-
 	warden->LoadImage("media_assets\\Grass.png", "grass");
 	warden->LoadImage("media_assets\\Dirt.png", "dirt");
 	warden->LoadImage("media_assets\\Rock.png", "rock");
@@ -54,7 +50,7 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
-	p->SetZindex(-1);
+	p->SetZindex(1);
 	Monster *m = new Monster(100, 100);
 
 	p->SetImage(warden->GetImage("test"));
@@ -99,7 +95,6 @@ int main()
 		warden->DrawAll(&App);
 
 		App.Display();
-		App.Clear();
 	}
 
 	return EXIT_SUCCESS;
