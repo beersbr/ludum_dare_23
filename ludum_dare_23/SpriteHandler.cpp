@@ -65,7 +65,7 @@ int SpriteHandler::Draw(sf::RenderTarget *rt)
 
 int SpriteHandler::SetPostition(int x, int y)
 {
-	if( x < 0 || x > REZ_X || y < 0 || y > REZ_Y) return 0;
+	//if( x < 0 || x > REZ_X || y < 0 || y > REZ_Y) return 0;
 
 	this->sprite.SetX(x);
 	this->sprite.SetY(y);
