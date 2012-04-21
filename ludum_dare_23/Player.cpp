@@ -2,11 +2,13 @@
 
 Player::Player(void)
 {
+	this->friction = 0.88;
 	this->sprite = new SpriteHandler();
 }
 
 Player::Player(double x, double y):Entity(x, y)
 {
+	this->friction = 0.88;
 	this->sprite = new SpriteHandler();
 }
 
@@ -28,6 +30,9 @@ int Player::SetImage(sf::Image *img)
 
 int Player::Update(void )
 {
+	this->pos.x += (this->ax *= this->friction);
+	this->pos.y += (this->ay *= this->friction);
+
 	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y));
 	return 0;
 }
