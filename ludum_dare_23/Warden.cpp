@@ -25,6 +25,12 @@ int Warden::LoadImage(std::string filename, std::string id)
 	return 0;
 }
 
+int Warden::LoadImage(std::string id, sf::Image img)
+{
+	this->images[id] = img;
+	return 1;
+}
+
 int Warden::LoadSound(std::string filename, std::string id)
 {
 	return 1;
@@ -46,6 +52,16 @@ int Warden::AddEntity(Entity* ent)
 sf::Image *Warden::GetImage(std::string id)
 {
 	return &(this->images[id]);
+}
+
+int Warden::DrawMap(sf::RenderTarget *rt)
+{
+	sf::Sprite mapSprite;
+
+	mapSprite.SetImage(images["gameMap"]);
+	mapSprite.SetPosition(0, 0);
+	rt->Draw(mapSprite);
+	return 1;
 }
 
 int Warden::DrawAll(sf::RenderTarget *rt)

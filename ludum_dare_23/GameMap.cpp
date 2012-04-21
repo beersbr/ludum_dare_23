@@ -18,6 +18,20 @@ GameMap::~GameMap(void)
 	delete (this->tileMap);
 }
 
+void GameMap::GenerateStaticMap()
+{
+	//Lets generate a map!
+	//Maybe randomly?
+	for(int i = 0; i < MAX_X_SIZE; i++)
+	{
+		for(int j = 0; j < MAX_Y_SIZE; j++)
+		{
+			this->tileMap[i][j] = rand() %3 + 1;
+		}
+	}
+	return;
+}
+
 sf::Image GameMap::GetMapImage(Warden *warden)
 {
 	sf::Image mapImage;
@@ -38,5 +52,6 @@ sf::Image GameMap::GetMapImage(Warden *warden)
 			}
 		}
 	}
+	warden->LoadImageA("gameMap", mapImage);
 	return mapImage;
 }

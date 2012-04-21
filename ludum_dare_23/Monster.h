@@ -33,3 +33,5 @@ void UpAndDown(Monster* mon);
 void LeftAndRight(Monster* mon);
 void Hunt(Monster* mon);
 void GoToWall(Monster* mon);
+void Chase(Monster* mon);
+void Avoid(Monster* mon);
