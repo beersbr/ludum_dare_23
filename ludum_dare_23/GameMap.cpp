@@ -27,7 +27,15 @@ sf::Image GameMap::GetMapImage(Warden *warden)
 	{
 		for(int j = 0; j < MAX_X_SIZE; j++)
 		{
-			
+			switch(static_cast<int>(this->tileMap[i][j]))
+			{
+			case GRASS:
+				mapImage.Copy(*warden->GetImage("grass"), j * X_TILE_SIZE, i * Y_TILE_SIZE);
+				break;
+			case DIRT:
+				mapImage.Copy(*warden->GetImage("dirt"), j * X_TILE_SIZE, i * Y_TILE_SIZE);
+				break;
+			}
 		}
 	}
 }

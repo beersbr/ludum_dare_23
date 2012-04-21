@@ -23,8 +23,9 @@ int main()
 	sf::Event game_event;
 	GAME_STATE GameState = RUNNING;
 
-
 	warden->LoadImage("media_assets/Grass.png", "grass");
+	warden->LoadImage("media_assets/Dirt.png", "dirt");
+	warden->LoadImage("media_assets/Rock.png", "rock");
 
 	// END GAME SETUP
 

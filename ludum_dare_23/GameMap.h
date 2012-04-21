@@ -7,6 +7,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
+enum{GRASS = 1, DIRT, ROCK};
+
 class GameMap
 {
 public:
