@@ -10,4 +10,3 @@ const int X_TILE_SIZE = 40;
 const int Y_TILE_SIZE = 40;
 
 enum GAME_STATE{STOPPED = 0, RUNNING, PAUSED, LOADING};
-
