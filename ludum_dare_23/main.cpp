@@ -34,8 +34,8 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
-	p->img = warden->GetImage("grass");
-
+	p->SetImage(warden->GetImage("test"));
+	
 	// END SHOULD BE PER LEVEL
 
 	while(GameState)

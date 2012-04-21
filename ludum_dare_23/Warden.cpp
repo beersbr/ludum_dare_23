@@ -3,6 +3,7 @@
 Warden* Warden::_instance = NULL;
 std::map<std::string, sf::Image> Warden::images;
 std::map<std::string, sf::Sound> Warden::sounds;
+std::map<std::string, Entity *> Warden::entities;
 
 Warden *Warden::instance()
 {
@@ -31,14 +32,11 @@ int Warden::LoadSound(std::string filename, std::string id)
 
 int Warden::AddEntity(std::string id, Entity* toAdd)
 {
-
 	this->entities[id] = toAdd;
 	return 1;
 }
 
-
-
 sf::Image *Warden::GetImage(std::string id)
 {
-	return &images[id];
+	return &(this->images[id]);
 }
