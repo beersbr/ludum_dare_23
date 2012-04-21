@@ -19,6 +19,12 @@ Block::Block(Vector2D position, Vector2D dims)
 	this->dimensions = dims;
 }
 
+Block::Block(const Block& b)
+{
+	this->position = b.position;
+	this->dimensions = b.dimensions;
+}
+
 double Block::blockWidth()
 {
 	return this->dimensions.x;

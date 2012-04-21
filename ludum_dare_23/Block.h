@@ -9,6 +9,7 @@ public:
 	Block(void);
 	Block(Vector2D position);
 	Block(Vector2D position, Vector2D dims);
+	Block(const Block& b);
 	~Block(void);
 	Vector2D position;
 	Vector2D dimensions;
