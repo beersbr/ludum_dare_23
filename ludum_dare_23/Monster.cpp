@@ -14,10 +14,10 @@ Monster::Monster(double x, double y)
 void Monster::Init()
 {
 	//Set the actions;
-	actions[0] = &Monster::UpAndDown;
-	actions[1] = &Monster::LeftAndRight;
-	actions[2] = &Monster::Hunt;
-	actions[3] = &Monster::GoToWall;
+	actions[0] = &UpAndDown;
+	actions[1] = &LeftAndRight;
+	actions[2] = &Hunt;
+	actions[3] = &GoToWall;
 }
 
 
@@ -27,12 +27,7 @@ Monster::~Monster(void)
 
 int Monster::Draw(sf::RenderTarget * rt) const
 {
-	sf::Sprite sp; 
-	sp.SetImage(*this->img);
-	sp.SetX(static_cast<float>(this->pos.x));
-	sp.SetY(static_cast<float>(this->pos.y));
-	sp.Rotate(static_cast<float>(this->curRotation));
-	rt->Draw(sp);
+	this->sprite->Draw(rt);
 
 	return 0;
 }
@@ -40,78 +35,79 @@ int Monster::Draw(sf::RenderTarget * rt) const
 int Monster::Update()
 {
 	//Keep calling the current actions, they'll pass eachother off.
-	this->*currentAction();
-
+	currentAction(this);
+	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y));
+	return 0;
 }
 
 //Need to figure out when stages reset
-void Monster::UpAndDown()
+void UpAndDown(Monster* mon)
 {
 	//Lets move up a little, then down some.
 
 	//Down poriton
-	if(stages[1])
+	if(mon->stages[1])
 	{
 		double dY = rand() % (REZ_Y - 10) + 10;
-		while(this->pos.y + dY > REZ_Y)
+		while(mon->pos.y + dY > REZ_Y)
 		{
 			dY = rand() % (REZ_Y - 10) + 10;
 		}
-		endY = dY + this->pos.y;
-		stages[1] = false;
+		mon->endY = dY + mon->pos.y;
+		mon->stages[1] = false;
 	}
 	else
 	{
-		this->pos.y += ay; //Move
+		mon->pos.y += mon->ay; //Move
 		//Look for player here!
 
-		if(this->pos.y >= endY)
+		if(mon->pos.y >= mon->endY)
 		{
-			resetStages(); //reset stage, set action to something else!
-			this->currentAction = actions[rand() % 4]; 
+			mon->resetStages(); //reset stage, set action to something else!
+			mon->currentAction = mon->actions[rand() % 4]; 
 		}
 	}
 
 	//Up portion
-	if(stages[0])
+	if(mon->stages[0])
 	{
 		//set an endpoint on the y axis
 		double dY = rand() % (REZ_Y - 10) + 10;
 		//Border checking
-		while(this->pos.y - dY < 0)
+		while(mon->pos.y - dY < 0)
 		{
 			dY = rand() % (REZ_Y - 10) + 10;
 		}
 
-		endY = dY - this->pos.y;
-		stages[0] = false;
+		mon->endY = dY - mon->pos.y;
+		mon->stages[0] = false;
 	}
 	else
 	{
-		this->pos.y -= ay; //Move
+		mon->pos.y -= mon->ay; //Move
 		//Look for player here!
 
-		if(this->pos.y <= endY)
+		if(mon->pos.y <= mon->endY)
 		{
 			//next stage, go down.
-			stages[1] = true;
+			mon->stages[1] = true;
 		}
 	}
 
 
 }
 
-void Monster::LeftAndRight()
+void LeftAndRight(Monster* mon)
 {
 
 }
 
-void Monster::Hunt()
+void Hunt(Monster* mon)
 {
 
 }
 
-void Monster::GoToWall()
+void GoToWall(Monster* mon)
 {
 
 }
