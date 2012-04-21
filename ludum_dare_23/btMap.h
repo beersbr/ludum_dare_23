@@ -8,7 +8,7 @@ class MapNode
 {
 public:
 	MapNode();
-	MapNode(Point position);
+	//MapNode(Vector2D position);
 	~MapNode();
 
 #endif
