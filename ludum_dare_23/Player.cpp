@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 Player::Player(void)
 {
 }
@@ -20,7 +19,6 @@ int Player::Draw(sf::RenderTarget *rt) const
 	sp.SetImage(*this->img);
 	sp.SetX(this->pos.x);
 	sp.SetY(this->pos.y);
-
 	rt->Draw(sp);
 
 	return 0;

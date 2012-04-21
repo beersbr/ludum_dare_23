@@ -22,6 +22,5 @@ private:
 
 	int frames;
 	int current_frame;
-
 };
 
