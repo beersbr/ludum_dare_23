@@ -49,9 +49,12 @@ sf::Image GameMap::GetMapImage(Warden *warden)
 			case DIRT:
 				mapImage.Copy(*warden->GetImage("dirt"), j * X_TILE_SIZE, i * Y_TILE_SIZE);
 				break;
+			case ROCK:
+				mapImage.Copy(*warden->GetImage("rock"), j * X_TILE_SIZE, i * Y_TILE_SIZE);
 			}
 		}
 	}
+	//mapImage.SaveToFile("Lol.jpg");
 	warden->LoadImageA("gameMap", mapImage);
 	return mapImage;
 }
