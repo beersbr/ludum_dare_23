@@ -13,6 +13,5 @@ public:
 private:
 	static sf::Image Image;
 	sf::Sprite Sprite;
-
 };
 
