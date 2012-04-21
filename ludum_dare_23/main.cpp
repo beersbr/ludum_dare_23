@@ -22,16 +22,19 @@ int main()
 
 
 	// START GAME SETUP
+	
+	//Seed that random generator
+	srand(time(NULL));
 
 	InputHandler *input = InputHandler::instance();
 	Warden *warden = Warden::instance();
 	sf::Event game_event;
 	GAME_STATE GameState = RUNNING;
 
-	warden->LoadImage("media_assets/Grass.png", "grass");
-	warden->LoadImage("media_assets/Dirt.png", "dirt");
-	warden->LoadImage("media_assets/Rock.png", "rock");
-	warden->LoadImage("media_assets/TestSprite.png", "test");
+	warden->LoadImage("media_assets\\Grass.png", "grass");
+	warden->LoadImage("media_assets\\Dirt.png", "dirt");
+	warden->LoadImage("media_assets\\Rock.png", "rock");
+	warden->LoadImage("media_assets\\TestSprite.png", "test");
 
 	// END GAME SETUP
 
@@ -39,7 +42,7 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
-	Monster *m = new Monster(100, 100);
+	Monster *m = new Monster(100, 300);
 
 	p->SetImage(warden->GetImage("test"));
 	m->SetImage(warden->GetImage("dirt"));
