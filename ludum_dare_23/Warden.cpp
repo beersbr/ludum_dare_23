@@ -29,8 +29,16 @@ int Warden::LoadSound(std::string filename, std::string id)
 	return 1;
 }
 
-sf::Image *Warden::GetImage(std::string id)
+int Warden::AddEntity(std::string id, Entity* toAdd)
 {
 
+	this->entities[id] = toAdd;
+	return 1;
+}
+
+
+
+sf::Image *Warden::GetImage(std::string id)
+{
 	return &images[id];
 }

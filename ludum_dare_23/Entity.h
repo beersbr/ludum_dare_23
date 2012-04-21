@@ -18,6 +18,7 @@ public:
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
 	virtual int Update(void ) = 0;
 
+	SpriteHandler* spriteHandle;
 	Vector2D pos;
 	SpriteHandler *sprite;
 };
