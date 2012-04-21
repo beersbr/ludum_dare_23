@@ -30,6 +30,21 @@ Entity::Entity(double x, double y)
 	this->zindex = 0;
 }
 
+bool Entity::HasCollision(Entity *ent) const
+{
+	sf::Rect<int> myRect(static_cast<int>(this->pos.x),
+						 static_cast<int>(this->pos.y), 
+						 static_cast<int>(this->pos.x + X_TILE_SIZE),
+						 static_cast<int>(this->pos.y + Y_TILE_SIZE));
+
+	sf::Rect<int> clRect(static_cast<int>(ent->pos.x),
+						 static_cast<int>(ent->pos.y), 
+						 static_cast<int>(ent->pos.x + X_TILE_SIZE),
+						 static_cast<int>(ent->pos.y + Y_TILE_SIZE));
+
+	return myRect.Intersects(clRect);
+}
+
 int Entity::SetZindex(int idx)
 {
 	return (this->zindex = idx);

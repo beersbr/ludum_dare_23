@@ -17,6 +17,7 @@ public:
 
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
 	virtual int Update(void ) = 0;
+	virtual bool HasCollision(Entity *) const;
 
 	int SetZindex(int idx);
 	bool operator<(Entity *);
@@ -26,5 +27,7 @@ public:
 	double ax, ay, friction;
 	float curRotation;
 	int zindex;
+
+	ENTITY_TYPE type;
 };
 
