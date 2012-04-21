@@ -1,5 +1,6 @@
 #include "settings.h"
 #include "InputHandler.h"
+#include "Player.h"
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -15,6 +16,8 @@ int main()
 	InputHandler *input = InputHandler::instance();
 	GAME_STATE GameState = RUNNING;
 
+	Player *p = new Player();
+
 	while(GameState)
 	{
 		while(App.GetEvent(game_event))
@@ -26,6 +29,8 @@ int main()
 		{
 			GameState = STOPPED;
 		}
+
+		p->Draw(&App);
 
 		App.Display();
 	}

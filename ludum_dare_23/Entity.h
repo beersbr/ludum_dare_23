@@ -11,7 +11,7 @@ public:
 	~Entity(void);
 
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
-	virtual int Update(void ) const = 0;
+	virtual int Update(void ) = 0;
 
 	// put D's shit here for position
 };
