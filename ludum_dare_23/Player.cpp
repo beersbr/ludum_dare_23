@@ -28,5 +28,6 @@ int Player::SetImage(sf::Image *img)
 
 int Player::Update(void )
 {
+	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y));
 	return 0;
 }
