@@ -19,7 +19,7 @@ public:
 	virtual int Update(void ) = 0;
 
 	int SetZindex(int idx);
-	bool operator>(Entity &);
+	bool operator<(Entity *);
 
 	Vector2D pos;
 	SpriteHandler *sprite;

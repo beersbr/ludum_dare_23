@@ -35,9 +35,9 @@ int Entity::SetZindex(int idx)
 	return (this->zindex = idx);
 }
 
-bool Entity::operator>(Entity &ent)
+bool Entity::operator<(Entity *ent)
 {
-	if(this->zindex > ent.zindex) return true;
+	if(this->zindex > ent->zindex) return true;
 	return false;
 }
 
