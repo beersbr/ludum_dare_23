@@ -15,8 +15,5 @@ public:
 
 	int Draw(sf::RenderTarget *rt) const;
 	int Update(void );
-
-	double ax, ay, friction;
-	
 };
 

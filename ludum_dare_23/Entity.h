@@ -20,5 +20,7 @@ public:
 
 	Vector2D pos;
 	SpriteHandler *sprite;
+	double ax, ay, friction;
+	float curRotation;
 };
 
