@@ -39,6 +39,7 @@ int main()
 	warden->LoadImage("media_assets\\Grass.png", "grass");
 	warden->LoadImage("media_assets\\Dirt.png", "dirt");
 	warden->LoadImage("media_assets\\Rock.png", "rock");
+	warden->LoadImage("media_assets\\gman.png", "mon");
 	warden->LoadImage("media_assets\\TestSprite.png", "test");
 
 	/***
@@ -57,7 +58,7 @@ int main()
 	Monster *m = new Monster(100, 100);
 
 	p->SetImage(warden->GetImage("test"));
-	m->SetImage(warden->GetImage("dirt"));
+	m->SetImage(warden->GetImage("mon"));
 
 	warden->AddEntity(p);
 	warden->AddEntity(m);
