@@ -2,6 +2,7 @@
 #include "Warden.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include "Monster.h"
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -38,7 +39,10 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
+	Monster *m = new Monster(100, 100);
+
 	p->SetImage(warden->GetImage("test"));
+	m->SetImage(warden->GetImage("dirt"));
 	
 	// END SHOULD BE PER LEVEL
 
@@ -75,6 +79,9 @@ int main()
 		// the warden iterations would go here
 		p->Update();
 		p->Draw(&App);
+
+		m->Update();
+		m->Draw(&App);
 
 		App.Display();
 		App.Clear();

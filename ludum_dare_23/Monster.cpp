@@ -3,12 +3,14 @@
 
 Monster::Monster(void)
 {
+	this->friction = 0.88;
+	this->sprite = new SpriteHandler();
 }
 
-Monster::Monster(double x, double y)
+Monster::Monster(double x, double y): Entity(x, y)
 {
-	this->pos.x = x;
-	this->pos.y = y;
+	this->friction = 0.88;
+	this->sprite = new SpriteHandler();
 }
 
 void Monster::Init()
@@ -30,6 +32,12 @@ int Monster::Draw(sf::RenderTarget * rt) const
 	this->sprite->Draw(rt);
 
 	return 0;
+}
+
+int Monster::SetImage(sf::Image *img)
+{
+	if(!this->sprite->SetImage(img)) return 0;
+	return 1;
 }
 
 int Monster::Update()

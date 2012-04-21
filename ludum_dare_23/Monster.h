@@ -16,6 +16,7 @@ public:
 	void Init();
 	int Draw(sf::RenderTarget * rt) const;
 	int Update(void );
+	int SetImage(sf::Image *);
 
 	void resetStages();
 
