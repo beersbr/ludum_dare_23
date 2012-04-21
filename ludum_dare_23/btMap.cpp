@@ -7,6 +7,10 @@ MapNode::MapNode()
 	this->parent = this->left = this->right = NULL;
 }
 
+MapNode::~MapNode()
+{
+}
+
 //Generates a random map and returns the root node of said map
 MapNode* generateMap(int maxRooms)
 {
@@ -24,7 +28,6 @@ MapNode* generateMap(int maxRooms)
 	//Seed that random generator
 	srand(time(NULL));
 
-
 	//While we don't have the desired amout of rooms...
 	while(numRooms < maxRooms)
 	{
@@ -40,3 +43,7 @@ MapNode* generateMap(int maxRooms)
 			//Left node has same top-left pos as parent.
 			tmpLeft->refBlock.position =  curNode->refBlock.position;
 			//lets alter size.
+		}
+
+	}
+}

@@ -1,4 +1,7 @@
 #pragma once
+
+#include <SFML/Graphics.hpp>
+
 class SpriteHandler
 {
 public:
@@ -6,6 +9,10 @@ public:
 	~SpriteHandler(void);
 
 	SpriteHandler(SpriteHandler &sprite_handler);
+
+private:
+	static sf::Image Image;
+	sf::Sprite Sprite;
 
 };
 

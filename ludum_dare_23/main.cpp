@@ -27,8 +27,6 @@ int main()
 			GameState = STOPPED;
 		}
 
-
-
 		App.Display();
 	}
 
