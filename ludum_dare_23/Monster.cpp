@@ -261,6 +261,16 @@ void GoToWall(Monster* mon)
 
 }
 
+void Chase(Monster* mon)
+{
+
+}
+
+void Avoid(Monster* mon)
+{
+
+}
+
 void Monster::resetStages()
 {
 	for(int i = 0; i < 9; i++)

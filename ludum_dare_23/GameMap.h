@@ -17,6 +17,7 @@ public:
 
 	int LoadMap(char *map);
 	sf::Image GetMapImage(Warden *warden);
+	void GenerateStaticMap();
 
 private:
 	char **tileMap;

@@ -18,6 +18,7 @@ public:
 	static Warden *instance();
 
 	int LoadImage(std::string filename, std::string id);
+	int LoadImage(std::string id, sf::Image img);
 	int LoadSound(std::string filename, std::string id);
 	int AddEntity(Entity* ent);
 
@@ -26,6 +27,7 @@ public:
 	sf::Image *GetImage(std::string id);
 	int GetSound(std::string id);
 
+	int DrawMap(sf::RenderTarget *rt);
 	int DrawAll(sf::RenderTarget *rt);
 	int UpdateAll();
 

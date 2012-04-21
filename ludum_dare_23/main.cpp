@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "Player.h"
 #include "Monster.h"
+#include "GameMap.h"
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -20,7 +21,6 @@ int main()
 	sf::RenderWindow App(sf::VideoMode(REZ_X, REZ_Y, 32), WINDOW_TITLE);
 	App.SetFramerateLimit(FRAME_LIMIT);
 
-
 	// START GAME SETUP
 	
 	//Seed that random generator
@@ -28,8 +28,16 @@ int main()
 
 	InputHandler *input = InputHandler::instance();
 	Warden *warden = Warden::instance();
+	GameMap* gameMap = new GameMap();
 	sf::Event game_event;
 	GAME_STATE GameState = RUNNING;
+
+
+	gameMap->GenerateStaticMap();
+	gameMap->GetMapImage(warden);
+	//mapSprite.SetImage(gameMap->GetMapImage(warden));
+
+
 
 	warden->LoadImage("media_assets\\Grass.png", "grass");
 	warden->LoadImage("media_assets\\Dirt.png", "dirt");
@@ -50,6 +58,7 @@ int main()
 
 	warden->AddEntity(p);
 	warden->AddEntity(m);
+	warden->DrawMap(&App);
 	
 	// END SHOULD BE PER LEVEL
 
