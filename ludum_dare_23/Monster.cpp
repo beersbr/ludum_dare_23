@@ -25,7 +25,7 @@ void Monster::Init()
 	actions[3] = &GoToWall;
 
 	resetStages();
-
+	this->stopMoving = false;
 	this->currentAction = this->actions[0];
 }
 
@@ -50,6 +50,8 @@ int Monster::Update()
 {
 	//Keep calling the current actions, they'll pass eachother off.
 	currentAction(this);
+	if(!stopMoving)
+		return 0;
 	this->pos.x += (this->ax *= this->friction);
 	this->pos.y += (this->ay *= this->friction);
 
@@ -60,6 +62,7 @@ int Monster::Update()
 //Need to figure out when stages reset
 void UpAndDown(Monster* mon)
 {
+	static int updateCount = 0;
 	//Lets move up a little, then down some.
 	int randNum = 0;
 
@@ -67,38 +70,185 @@ void UpAndDown(Monster* mon)
 	{
 		//first stage. move up
 		//we'll stop by chance
-		randNum = rand() % 10 + 1;
-		if(randNum >= 8 || mon->pos.y <= 0)
+		randNum = rand() % 100 + 1;
+		if(randNum >= 50)
 		{
 			//moves to the next stage
-			mon->stages[0] = false;
-			mon->stages[1] = true;
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 90)
+				{
+					mon->stopMoving = false;
+					mon->stages[0] = false;
+					mon->stages[1] = true;
+					updateCount = 0;
+				}
+			}
+		}
+		else if ( mon->pos.y <= 0)
+		{
+			// hit a wall, need to go down.
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 95)
+				{
+					mon->stopMoving = false;
+					mon->stages[0] = false;
+					mon->stages[1] = true;
+					updateCount = 0;
+				}
+			}
 		}
 		else
 		{
-			mon->ay -= 0.5;
+			mon->ay -= 0.2;
 		}
 	}
 	if(mon->stages[1])
 	{
-		randNum = rand() % 10 +1;
-		if(randNum <= 8 || mon->pos.y >= REZ_Y)
+		randNum = rand() % 200 +1;
+		if(randNum >= 120)
 		{
 			//move to a different action
-			mon->resetStages();
-			//mon->currentAction = mon->actions[rand() % 4];
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 90)
+				{
+					mon->stopMoving = false;
+					mon->resetStages();
+					mon->currentAction = mon->actions[rand() % 2];
+					updateCount = 0;
+				}
+			}
+		}
+		else if ((mon->pos.y + Y_TILE_SIZE) >= REZ_Y)
+		{
+			// hit a wall, need to go down.
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 95)
+				{
+					mon->stopMoving = false;
+					mon->stages[0] = false;
+					mon->stages[1] = true;
+					updateCount = 0;
+				}
+			}
 		}
 		else
 		{
-			mon->ay += 0.8;
+			mon->ay += 0.2;
 		}
 	}
+	updateCount++;
 
 }
 
 void LeftAndRight(Monster* mon)
 {
+	static int updateCount = 0;
+	//Lets move up a little, then down some.
+	int randNum = 0;
 
+	if(mon->stages[0]) 
+	{
+		//first stage. move up
+		//we'll stop by chance
+		randNum = rand() % 100 + 1;
+		if(randNum >= 50)
+		{
+			//moves to the next stage
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 90)
+				{
+					mon->stopMoving = false;
+					mon->stages[0] = false;
+					mon->stages[1] = true;
+					updateCount = 0;
+				}
+			}
+		}
+		else if ( mon->pos.x <= 0)
+		{
+			// hit a wall, need to go down.
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 95)
+				{
+					mon->stopMoving = false;
+					mon->stages[0] = false;
+					mon->stages[1] = true;
+					updateCount = 0;
+				}
+			}
+		}
+		else
+		{
+			mon->ax -= 0.2;
+		}
+	}
+	if(mon->stages[1])
+	{
+		randNum = rand() % 200 +1;
+		if(randNum >= 120)
+		{
+			//move to a different action
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 90)
+				{
+					mon->stopMoving = false;
+					mon->resetStages();
+					mon->currentAction = mon->actions[rand() % 2];
+					updateCount = 0;
+				}
+			}
+		}
+		else if ((mon->pos.x + X_TILE_SIZE) >= REZ_X)
+		{
+			// hit a wall, need to go down.
+			//pause first though
+			mon->stopMoving = true;
+			if(updateCount > 400)
+			{
+				randNum = rand() % 100 + 1;
+				if(randNum > 95)
+				{
+					mon->stopMoving = false;
+					mon->stages[0] = false;
+					mon->stages[1] = true;
+					updateCount = 0;
+				}
+			}
+		}
+		else
+		{
+			mon->ax += 0.2;
+		}
+	}
+	updateCount++;
 }
 
 void Hunt(Monster* mon)

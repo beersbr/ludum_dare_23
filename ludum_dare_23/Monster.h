@@ -26,6 +26,7 @@ public:
 	double endX;
 	double endY;
 	bool   stages[10];
+	bool   stopMoving;
 };
 
 void UpAndDown(Monster* mon);
