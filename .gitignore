@@ -1,0 +1,17 @@
+# git ignore file
+*.pdb
+*.ipch
+*log
+*.manifest
+*.obj
+*.filters
+*.rc
+*.vcxproj*
+*.idb
+*.lastbuildstate
+*.unsuccessfulbuild
+*.res
+*.suo
+*.sln
+*.sdf
+*.opensdf
