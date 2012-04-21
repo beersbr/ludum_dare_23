@@ -13,9 +13,9 @@ public:
 	~SpriteHandler(void);
 
 	SpriteHandler(SpriteHandler &sprite_handler);
-	SpriteHandler(sf::Image *, int _frame_lag);
+	SpriteHandler(sf::Image *, int _frame_lag = 5);
 
-	int SetImage(sf::Image *, int _fram_lag);
+	int SetImage(sf::Image *, int _frame_lag = 5);
 	int SetPostition(int x, int y);
 	int Draw(sf::RenderTarget *rt);
 

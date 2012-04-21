@@ -38,5 +38,5 @@ int Warden::AddEntity(std::string id, Entity* toAdd)
 
 sf::Image *Warden::GetImage(std::string id)
 {
-	return &images[id];
+	return &(this->images[id]);
 }
