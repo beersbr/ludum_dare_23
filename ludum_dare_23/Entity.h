@@ -18,9 +18,13 @@ public:
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
 	virtual int Update(void ) = 0;
 
+	int SetZindex(int idx);
+	bool operator>(Entity &);
+
 	Vector2D pos;
 	SpriteHandler *sprite;
 	double ax, ay, friction;
 	float curRotation;
+	int zindex;
 };
 
