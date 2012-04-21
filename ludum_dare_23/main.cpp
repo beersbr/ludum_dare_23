@@ -33,9 +33,6 @@ int main()
 	GAME_STATE GameState = RUNNING;
 
 
-	gameMap->GenerateStaticMap();
-	gameMap->GetMapImage(warden);
-	//mapSprite.SetImage(gameMap->GetMapImage(warden));
 
 
 
@@ -43,6 +40,12 @@ int main()
 	warden->LoadImage("media_assets\\Dirt.png", "dirt");
 	warden->LoadImage("media_assets\\Rock.png", "rock");
 	warden->LoadImage("media_assets\\TestSprite.png", "test");
+
+	/***
+	 *Needs to come after loading images
+	 ***/
+	gameMap->GenerateStaticMap();
+	gameMap->GetMapImage(warden);
 
 	// END GAME SETUP
 
@@ -58,7 +61,6 @@ int main()
 
 	warden->AddEntity(p);
 	warden->AddEntity(m);
-	warden->DrawMap(&App);
 	
 	// END SHOULD BE PER LEVEL
 
@@ -100,6 +102,7 @@ int main()
 		m->Draw(&App);*/
 
 		warden->UpdateAll();
+		warden->DrawMap(&App);
 		warden->DrawAll(&App);
 
 		App.Display();
