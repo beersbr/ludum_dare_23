@@ -34,7 +34,6 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
-	p->img = warden->GetImage("grass");
 
 	// END SHOULD BE PER LEVEL
 

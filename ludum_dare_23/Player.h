@@ -17,6 +17,6 @@ public:
 	int Update(void );
 
 	double ax, ay, friction;
-	SpriteHandler *sp;	
+	
 };
 

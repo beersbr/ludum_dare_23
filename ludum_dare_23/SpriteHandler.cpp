@@ -9,6 +9,12 @@ SpriteHandler::~SpriteHandler(void)
 {
 }
 
+SpriteHandler::SpriteHandler(SpriteHandler &sprite_handler)
+{
+	this->sprite = sf::Sprite(sprite_handler.sprite);
+
+}
+
 SpriteHandler::SpriteHandler(sf::Image *img, int _frame_lag = 5)
 {
 	if(img)
