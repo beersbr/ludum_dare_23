@@ -18,4 +18,5 @@ public:
 };
 
 //Generates a random map and returns the root node of said map
-MapNode* generateMap(int maxRooms);
+MapNode* generateMapTree(int maxRooms);
+void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms);
