@@ -2,7 +2,7 @@
 #include "settings.h"
 #include "Entity.h"
 
-typedef void (*monsterAction)();
+//typedef void (Monster::*monsterAction)();
 
 
 class Monster :
@@ -17,12 +17,17 @@ public:
 	int Draw(sf::RenderTarget * rt) const;
 	int Update(void );
 
-	void (*currentAction)();
-	monsterAction actions[4];
+	void UpAndDown();
+	void LeftAndRight();
+	void Hunt();
+	void GoToWall();
 
+	void resetStages();
+
+	void (Monster::*currentAction)();
+	void(Monster::*actions[4])();
+private:
+	double endX;
+	double endY;
+	bool   stages[10];
 };
-
-void UpAndDown();
-void LeftAndRight();
-void Hunt();
-void GoToWall();

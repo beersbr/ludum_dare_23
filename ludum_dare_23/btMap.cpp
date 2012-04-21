@@ -34,6 +34,7 @@ MapNode* generateMapTree(int maxRooms)
 		//connect the two nodes together
 		connectRooms((*leafList)[i], (*leafList)[i+1]);
 	}
+	return rootNode;
 }
 
 void connectRooms(MapNode* roomOne, MapNode* roomTwo)
@@ -171,5 +172,6 @@ void generateMapHelper(MapNode* curNode, int curDepth, int maxDepth)
 //Flatten out the Map file.
 char* generateMap(int maxRooms)
 {
-
+	char* tmp;
+	return tmp;
 }

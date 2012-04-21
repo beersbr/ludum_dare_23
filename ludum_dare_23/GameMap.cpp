@@ -38,4 +38,5 @@ sf::Image GameMap::GetMapImage(Warden *warden)
 			}
 		}
 	}
+	return mapImage;
 }
