@@ -27,6 +27,7 @@ public:
 	sf::Image *GetImage(std::string id);
 	int GetSound(std::string id);
 
+	int CheckCollisionAll();
 	int DrawMap(sf::RenderTarget *rt);
 	int DrawAll(sf::RenderTarget *rt);
 	int UpdateAll();
@@ -40,4 +41,5 @@ private:
 	static std::map<std::string, sf::Image> images;
 	static std::map<std::string, sf::Sound> sounds;
 	static std::vector<Entity *> entities;
+	std::vector<Entity *> acts_on_collision;
 };

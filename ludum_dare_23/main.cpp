@@ -25,16 +25,13 @@ int main()
 	
 	//Seed that random generator
 	srand(time(NULL));
+	// What does ^ do?
 
 	InputHandler *input = InputHandler::instance();
 	Warden *warden = Warden::instance();
 	GameMap* gameMap = new GameMap();
 	sf::Event game_event;
 	GAME_STATE GameState = RUNNING;
-
-
-
-
 
 	warden->LoadImage("media_assets\\Grass.png", "grass");
 	warden->LoadImage("media_assets\\Dirt.png", "dirt");
@@ -54,7 +51,7 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
-	p->SetZindex(-1);
+	p->SetZindex(1);
 	Monster *m = new Monster(100, 100);
 
 	p->SetImage(warden->GetImage("test"));
@@ -79,7 +76,6 @@ int main()
 
 		if(input->KeyIsDown(sf::Key::W))
 		{
-			// the 0.8 would be changed to some variable named power maybe
 			p->ay -= 0.8;
 		}
 		if(input->KeyIsDown(sf::Key::S))
@@ -95,19 +91,11 @@ int main()
 			p->ax += 0.8;
 		}
 
-		// the warden iterations would go here
-		/*p->Update();
-		p->Draw(&App);
-
-		m->Update();
-		m->Draw(&App);*/
-
 		warden->UpdateAll();
 		warden->DrawMap(&App);
 		warden->DrawAll(&App);
 
 		App.Display();
-		App.Clear();
 	}
 
 	return EXIT_SUCCESS;

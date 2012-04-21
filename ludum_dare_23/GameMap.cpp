@@ -26,7 +26,7 @@ void GameMap::GenerateStaticMap()
 	{
 		for(int j = 0; j < MAX_Y_SIZE; j++)
 		{
-			this->tileMap[i][j] = rand() %3 + 1;
+			this->tileMap[i][j] = rand() % 2 + 1;
 		}
 	}
 	return;
@@ -55,6 +55,6 @@ sf::Image GameMap::GetMapImage(Warden *warden)
 		}
 	}
 	//mapImage.SaveToFile("Lol.jpg");
-	warden->LoadImageA("gameMap", mapImage);
+	warden->LoadImage("gameMap", mapImage);
 	return mapImage;
 }

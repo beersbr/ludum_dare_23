@@ -5,6 +5,7 @@ Monster::Monster(void)
 {
 	this->friction = 0.88;
 	this->sprite = new SpriteHandler();
+	this->type = MONSTER;
 }
 
 Monster::Monster(double x, double y): Entity(x, y)
@@ -14,7 +15,7 @@ Monster::Monster(double x, double y): Entity(x, y)
 
 void Monster::Init()
 {
-
+	this->type = MONSTER;
 	this->friction = 0.88;
 	this->sprite = new SpriteHandler();
 
