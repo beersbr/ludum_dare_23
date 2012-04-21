@@ -16,6 +16,5 @@ public:
 	int Update(void );
 
 	double ax, ay, friction;
-	sf::Image *img;
 };
 

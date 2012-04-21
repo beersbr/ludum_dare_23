@@ -20,5 +20,8 @@ public:
 
 	SpriteHandler* spriteHandle;
 	Vector2D pos;
+	sf::Image* img;
+	double ax, ay, friction;
+	float curRotation;
 };
 
