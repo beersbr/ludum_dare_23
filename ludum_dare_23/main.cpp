@@ -42,7 +42,8 @@ int main()
 	// START SHOULD BE PER LEVEL
 
 	Player *p = new Player(500, 500);
-	Monster *m = new Monster(100, 300);
+	p->SetZindex(-1);
+	Monster *m = new Monster(100, 100);
 
 	p->SetImage(warden->GetImage("test"));
 	m->SetImage(warden->GetImage("dirt"));

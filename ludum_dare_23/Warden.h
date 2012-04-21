@@ -20,11 +20,14 @@ public:
 	int LoadImage(std::string filename, std::string id);
 	int LoadSound(std::string filename, std::string id);
 	int AddEntity(std::string id, Entity* entity);
-	
+
 	int RemoveEntity(std::string id);
 	Entity* GetEntity(std::string id);
 	sf::Image *GetImage(std::string id);
 	int GetSound(std::string id);
+
+	int DrawAll(sf::RenderTarget *rt);
+	int UpdateAll();
 
 private:
 	Warden(void);
@@ -34,5 +37,5 @@ private:
 
 	static std::map<std::string, sf::Image> images;
 	static std::map<std::string, sf::Sound> sounds;
-	static std::map<std::string, Entity*> entities;
+	static std::vector<Entity *> entities;
 };

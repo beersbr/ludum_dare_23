@@ -37,7 +37,6 @@ Monster::~Monster(void)
 int Monster::Draw(sf::RenderTarget * rt) const
 {
 	this->sprite->Draw(rt);
-
 	return 0;
 }
 
