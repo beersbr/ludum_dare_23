@@ -47,6 +47,9 @@ int main()
 
 	p->SetImage(warden->GetImage("test"));
 	m->SetImage(warden->GetImage("dirt"));
+
+	warden->AddEntity(p);
+	warden->AddEntity(m);
 	
 	// END SHOULD BE PER LEVEL
 
@@ -81,11 +84,14 @@ int main()
 		}
 
 		// the warden iterations would go here
-		p->Update();
+		/*p->Update();
 		p->Draw(&App);
 
 		m->Update();
-		m->Draw(&App);
+		m->Draw(&App);*/
+
+		warden->UpdateAll();
+		warden->DrawAll(&App);
 
 		App.Display();
 		App.Clear();

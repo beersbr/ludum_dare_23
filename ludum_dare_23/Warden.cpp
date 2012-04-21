@@ -30,10 +30,16 @@ int Warden::LoadSound(std::string filename, std::string id)
 	return 1;
 }
 
-int Warden::AddEntity(std::string id, Entity* toAdd)
+int Warden::AddEntity(Entity* ent)
 {
-	this->entities.push_back(toAdd);
-	sort(this->entities.begin(), this->entities.end());
+	this->entities.push_back(ent);
+
+	std::sort(this->entities.begin(),
+		this->entities.end(), 
+		[](const Entity *a, const Entity *b) -> bool
+		{ 
+			return (a->zindex < b->zindex); 
+		});
 	return 1;
 }
 
@@ -49,9 +55,15 @@ int Warden::DrawAll(sf::RenderTarget *rt)
 	{
 		(*itr)->Draw(rt);
 	}
+	return 1;
 }
 
 int Warden::UpdateAll()
 {
-
+	std::vector<Entity *>::iterator itr = this->entities.begin();
+	for(itr; itr != this->entities.end(); itr++)
+	{
+		(*itr)->Update();
+	}
+	return 1;
 }

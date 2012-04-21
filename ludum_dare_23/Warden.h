@@ -19,7 +19,7 @@ public:
 
 	int LoadImage(std::string filename, std::string id);
 	int LoadSound(std::string filename, std::string id);
-	int AddEntity(std::string id, Entity* entity);
+	int AddEntity(Entity* ent);
 
 	int RemoveEntity(std::string id);
 	Entity* GetEntity(std::string id);
