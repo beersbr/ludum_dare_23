@@ -18,12 +18,4 @@ public:
 };
 
 //Generates a random map and returns the root node of said map
-MapNode* generateMap()
-{
-	MapNode* rootNode = new MapNode();
-	//Root of this node, BETTER BE FUCKIN' NULL
-	//Lets edit the block that represents this node..
-	rootNode->refBlock.dimensions.x = MAX_X_SIZE;
-	rootNode->refBlock.dimensions.x = MAX_Y_SIZE;
-
-}
+MapNode* generateMap(int maxRooms);

@@ -13,10 +13,10 @@ Vector2D::Vector2D(int x, int y)
 	this->y = y;
 }
 
-Vector2D::Vector2D(Vector2D &v)
+Vector2D::Vector2D(const Vector2D& vec)
 {
-	this->x = v.x;
-	this->y = v.y;
+	this->x = vec.x;
+	this->y = vec.y;
 }
 
 Vector2D::~Vector2D(void)
