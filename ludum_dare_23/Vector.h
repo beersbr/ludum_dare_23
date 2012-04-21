@@ -6,7 +6,7 @@ public:
 	Vector2D(int x, int y);
 	Vector2D(const Vector2D& vec);
 	~Vector2D(void);
-	int x;
-	int y;
+	double x;
+	double y;
 };
 
