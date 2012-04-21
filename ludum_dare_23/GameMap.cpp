@@ -17,3 +17,17 @@ GameMap::~GameMap(void)
 	}
 	delete (this->tileMap);
 }
+
+sf::Image GameMap::GetMapImage(Warden *warden)
+{
+	sf::Image mapImage;
+	mapImage.Create(MAX_X_SIZE * X_TILE_SIZE, MAX_Y_SIZE * Y_TILE_SIZE, sf::Color(0, 0, 0));
+
+	for(int i = 0; i < MAX_Y_SIZE; i++)
+	{
+		for(int j = 0; j < MAX_X_SIZE; j++)
+		{
+			
+		}
+	}
+}

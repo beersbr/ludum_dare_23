@@ -15,14 +15,13 @@ Player::~Player(void)
 
 int Player::Draw(sf::RenderTarget *rt) const
 {
-	//Just for testing the drawing stuff
 
-	sf::Shape rect;
-	rect.AddPoint(this->pos.x - (X_TILE_SIZE/2), this->pos.y - (Y_TILE_SIZE/2), sf::Color(0, 0, 255));
-	rect.AddPoint(this->pos.x + (X_TILE_SIZE/2), this->pos.y - (Y_TILE_SIZE/2), sf::Color(0, 0, 255));
-	rect.AddPoint(this->pos.x + (X_TILE_SIZE/2), this->pos.y + (Y_TILE_SIZE/2), sf::Color(0, 0, 255));
-	rect.AddPoint(this->pos.x - (X_TILE_SIZE/2), this->pos.y + (Y_TILE_SIZE/2), sf::Color(0, 0, 255));
-	rt->Draw(rect);
+	sf::Sprite sp; 
+	sp.SetImage(*this->img);
+	sp.SetX(this->pos.x);
+	sp.SetY(this->pos.y);
+
+	rt->Draw(sp);
 
 	return 0;
 }

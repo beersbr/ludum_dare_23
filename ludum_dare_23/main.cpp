@@ -1,4 +1,5 @@
 #include "settings.h"
+#include "Warden.h"
 #include "InputHandler.h"
 #include "Player.h"
 
@@ -6,17 +7,34 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#include <iostream>
+#include <fstream>
+
 int main()
 {
 	sf::RenderWindow App(sf::VideoMode(REZ_X, REZ_Y, 32), WINDOW_TITLE);
 	App.SetFramerateLimit(FRAME_LIMIT);
 
-	sf::Event game_event;
+
+	// START GAME SETUP
 
 	InputHandler *input = InputHandler::instance();
+	Warden *warden = Warden::instance();
+	sf::Event game_event;
 	GAME_STATE GameState = RUNNING;
 
+
+	warden->LoadImage("media_assets/Grass.png", "grass");
+
+	// END GAME SETUP
+
+
+	// START SHOULD BE PER LEVEL
+
 	Player *p = new Player(500, 500);
+	p->img = warden->GetImage("grass");
+
+	// END SHOULD BE PER LEVEL
 
 	while(GameState)
 	{

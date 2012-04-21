@@ -1,6 +1,11 @@
 #pragma once
 
 #include "settings.h"
+#include "Warden.h"
+
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 
 class GameMap
 {
@@ -9,6 +14,7 @@ public:
 	~GameMap(void);
 
 	int LoadMap(char *map);
+	sf::Image GetMapImage(Warden *warden);
 
 private:
 	char **tileMap;
