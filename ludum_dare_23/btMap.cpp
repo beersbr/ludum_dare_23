@@ -10,15 +10,88 @@ MapNode::MapNode()
 MapNode* generateMapTree(int maxRooms)
 {
 	MapNode* rootNode = new MapNode();
+	std::vector<MapNode*>* leafList = new std::vector<MapNode*>();
 
 	rootNode->refBlock.dimensions.x = MAX_X_SIZE;
 	rootNode->refBlock.dimensions.y = MAX_Y_SIZE;
 	rootNode->refBlock.position.x = 0;
 	rootNode->refBlock.position.y = 0;
 	generateMapHelper(rootNode, 1, maxRooms);
-	return rootNode;
+	
+	//Now we need to create rooms in the leaves.
+	getLeafNodes(rootNode, leafList);
+
+	//for each leaf node...
+	for(int i = 0; i < leafList->size(); i++)
+	{
+		//generate a room somewhere in this node.
+		generateRoom((*leafList)[i]);
+	}
+
+	//Connect some corridors
+	for(int i = 0; i < leafList->size(); i+=2)
+	{
+		//connect the two nodes together
+		connectRooms((*leafList)[i], (*leafList)[i+1]);
+	}
+}
+
+void connectRooms(MapNode* roomOne, MapNode* roomTwo)
+{
+
 }
 	
+void generateRoom(MapNode* blockNode)
+{
+	//figure out a random spot, with a random size.
+	//If there's no way this is gonna fit, create a smaller map
+
+	int roomSize = rand() % MAX_ROOM_SIZE + MIN_ROOM_SIZE;
+	
+	//check to see if the room is bigger than the block
+	while(roomSize > blockNode->refBlock.dimensions.x || roomSize > blockNode->refBlock.dimensions.y)
+	{
+		roomSize = rand() % MAX_ROOM_SIZE + MIN_ROOM_SIZE;
+	}
+
+	//pick a position (top left corner)
+	Vector2D roomPos(rand() % (int)( blockNode->refBlock.blockX() + blockNode->refBlock.blockWidth() ) + blockNode->refBlock.blockX() ,  rand() % (int)( blockNode->refBlock.blockY() + blockNode->refBlock.blockHeight()) + blockNode->refBlock.blockY());
+	//That was long.. let's check to see if it fits..
+	while(roomPos.x > (blockNode->refBlock.blockX() + blockNode->refBlock.blockWidth()) && roomPos.y > (blockNode->refBlock.blockY() + blockNode->refBlock.blockHeight()))
+	{
+		roomPos.x = rand() % (int)( blockNode->refBlock.blockX() + blockNode->refBlock.blockWidth() ) + blockNode->refBlock.blockX();
+		roomPos.y = rand() % (int)( blockNode->refBlock.blockY() + blockNode->refBlock.blockHeight()) + blockNode->refBlock.blockY();
+	}
+	//TODO: Check for fitting in the other direction, maybe
+
+	//room is placed!
+	Room tmpRoom(roomPos, roomSize);
+	blockNode->refRoom = tmpRoom;
+	
+}
+
+void getLeafNodes(MapNode* rootNode, std::vector<MapNode*>* leaves)
+{
+	if(rootNode == NULL)
+	{
+		//we wen't too deep
+		return;
+	}
+
+	if(rootNode->left == NULL && rootNode->right == NULL)
+	{
+		//its a leaf, add it.
+		leaves->push_back(rootNode);
+		return;
+	}
+
+	getLeafNodes(rootNode->left, leaves);
+	getLeafNodes(rootNode->right, leaves);
+	return;
+}
+
+	
+
 
 //Generates a random map and returns the root node of said map
 void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms)
@@ -41,8 +114,8 @@ void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms)
 
 	//Get a random point and direction!
 	curDir = rand() % 2; //current direction.. 0 = horizontal, 1 = vertical;
-	randPos.x = rand() % 100 + 1;
-	randPos.y = rand() % 100 + 1;
+	randPos.x = rand() % MAX_X_SIZE + 1;
+	randPos.y = rand() % MAX_Y_SIZE + 1;
 
 	//split and add nodes
 	tmpLeft = new MapNode();
@@ -85,7 +158,11 @@ void generateMapHelper(MapNode* curNode, int curRooms, int maxRooms)
 	curNode->right = tmpRight;
 	//left
 	generateMapHelper(curNode->left, curRooms + 2, maxRooms /2);
-	generateMapHelper(curNode->right, curRooms + 2, maxRooms /2);
+	generateMapHelper(curNode->right, curRooms + 2, maxRooms /2);	
+}
 
-	
+//Flatten out the Map file.
+char* generateMap(int maxRooms)
+{
+
 }

@@ -15,5 +15,7 @@ public:
 	Vector2D dimensions;
 	double blockWidth();
 	double blockHeight();
+	double blockX();
+	double blockY();
 };
 

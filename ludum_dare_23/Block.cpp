@@ -35,6 +35,16 @@ double Block::blockHeight()
 	return this->dimensions.y;
 }
 
+double Block::blockX()
+{
+	return this->position.x;
+}
+
+double Block::blockY()
+{
+	return this->position.y;
+}
+
 Block::~Block(void)
 {
 }
