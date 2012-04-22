@@ -54,7 +54,6 @@ int Monster::Update()
 		return 0;
 	this->pos.x += (this->ax *= this->friction);
 	this->pos.y += (this->ay *= this->friction);
-
 	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y));
 	return 0;
 }

@@ -20,6 +20,8 @@ SpriteHandler::SpriteHandler(sf::Image *img, int _frame_lag)
 	if(img)
 	{
 		this->frames = img->GetWidth() % X_TILE_SIZE;
+		if(!this->frames)
+			frames++;
 		this->frame_lag = _frame_lag;
 		this->current_frame = 0;
 		this->frame_lag_count = 0;
@@ -38,6 +40,8 @@ int SpriteHandler::SetImage(sf::Image *img, int _frame_lag)
 	this->frame_lag = _frame_lag;
 	this->frame_lag_count = 0;
 	this->frames = img->GetWidth() / X_TILE_SIZE;
+	if(!this->frames)
+		frames++;
 	this->current_frame = 0;
 	this->rect.Top = 0;
 	this->rect.Left = 0;
