@@ -10,6 +10,7 @@ Entity::Entity(void)
 	this->curRotation = 0.0;
 	this->sprite = new SpriteHandler();
 	this->zindex = 0;
+	this->rect = sf::Rect<int>(0, 0, X_TILE_SIZE, Y_TILE_SIZE);
 }
 
 Entity::Entity(Entity &entity)
@@ -17,6 +18,7 @@ Entity::Entity(Entity &entity)
 	this->pos.x = entity.pos.x;
 	this->pos.y = entity.pos.y;
 	this->sprite = new SpriteHandler(*entity.sprite);
+	this->rect = sf::Rect<int>(entity.rect);
 }
 
 Entity::Entity(double x, double y)
@@ -28,6 +30,8 @@ Entity::Entity(double x, double y)
 	this->curRotation = 0.0;
 	this->sprite = new SpriteHandler();
 	this->zindex = 0;
+	this->rect = sf::Rect<int>(static_cast<int>(x), static_cast<int>(y),
+							   static_cast<int>(x + X_TILE_SIZE), static_cast<int>(y + Y_TILE_SIZE));
 }
 
 bool Entity::HasCollision(Entity *ent) const
@@ -58,10 +62,20 @@ bool Entity::operator<(Entity *ent)
 
 sf::Vector2<int> Entity::GetCenter()
 {
-	return sf::Vector2<int>(this->pos.x+(X_TILE_SIZE/2), this->pos.y+(Y_TILE_SIZE/2));
+	return sf::Vector2<int>(static_cast<int>(this->pos.x+(X_TILE_SIZE/2)),
+						    static_cast<int>(this->pos.y+(Y_TILE_SIZE/2)));
+}
+
+int Entity::Update()
+{
+	rect.Top = static_cast<int>(this->pos.y);
+	rect.Left = static_cast<int>(this->pos.x);
+	rect.Right = static_cast<int>(this->pos.x + X_TILE_SIZE);
+	rect.Bottom = static_cast<int>(this->pos.y + Y_TILE_SIZE);
+
+	return 1;
 }
 
 Entity::~Entity(void)
 {
 }
-

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Vector.h"
 #include "SpriteHandler.h"
 
 #include <SFML/System.hpp>
@@ -16,14 +15,15 @@ public:
 	~Entity(void);
 
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
-	virtual int Update(void ) = 0;
+	virtual int Update(void );
 	virtual bool HasCollision(Entity *) const;
 
 	int SetZindex(int idx);
 	bool operator<(Entity *);
 	sf::Vector2<int> GetCenter();
 
-	Vector2D pos;
+	sf::Vector2<double> pos;
+	sf::Rect<int> rect;
 	SpriteHandler *sprite;
 	double ax, ay, friction;
 	float curRotation;
