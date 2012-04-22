@@ -30,7 +30,6 @@ void Monster::Init()
 	this->currentAction = this->actions[0];
 }
 
-
 Monster::~Monster(void)
 {
 }

@@ -86,11 +86,27 @@ int Warden::UpdateAll()
 
 int Warden::CheckCollisionAll()
 {
-	std::vector<Entity *>::iterator itr = this->entities.begin();
-	std::vector<Entity *> temp;
+	std::vector<Entity *>::iterator itr = this->entities.begin(), temp_itr;
+
+	sf::Rect<int> bounding_rect;
 
 	for(itr; itr != this->entities.end(); itr++)
 	{
-		
+		if((*itr)->type != MONSTER || (*itr)->type != PLAYER) continue;
+
+		// bounding rectangle
+		bounding_rect.Top = (*itr)->pos.y - Y_TILE_SIZE * 2;
+		bounding_rect.Left = (*itr)->pos.x - X_TILE_SIZE * 2;
+		bounding_rect.Bottom = (*itr)->pos.x + X_TILE_SIZE * 2;
+		bounding_rect.Right = (*itr)->pos.x + Y_TILE_SIZE * 2;
+
+		for(temp_itr = this->entities.begin(); temp_itr != this->entities.end(); temp_itr++)
+		{
+			if(bounding_rect.Contains((*temp_itr)->GetCenter().x, (*temp_itr)->GetCenter().y))
+			{
+				// check for collision here... again...
+				//if(bounding_rect.Intersects(
+			}
+		}
 	}
 }

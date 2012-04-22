@@ -21,6 +21,7 @@ public:
 
 	int SetZindex(int idx);
 	bool operator<(Entity *);
+	sf::Vector2<int> GetCenter();
 
 	Vector2D pos;
 	SpriteHandler *sprite;

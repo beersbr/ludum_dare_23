@@ -56,5 +56,6 @@ sf::Image GameMap::GetMapImage(Warden *warden)
 	}
 	//mapImage.SaveToFile("Lol.jpg");
 	warden->LoadImage("gameMap", mapImage);
+
 	return mapImage;
 }

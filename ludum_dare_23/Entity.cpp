@@ -56,6 +56,11 @@ bool Entity::operator<(Entity *ent)
 	return false;
 }
 
+sf::Vector2<int> Entity::GetCenter()
+{
+	return sf::Vector2<int>(this->pos.x+(X_TILE_SIZE/2), this->pos.y+(Y_TILE_SIZE/2));
+}
+
 Entity::~Entity(void)
 {
 }
