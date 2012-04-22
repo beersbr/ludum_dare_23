@@ -81,6 +81,8 @@ int Warden::UpdateAll()
 	{
 		(*itr)->Update();
 	}
+	CheckCollisionAll();
+
 	return 1;
 }
 
@@ -92,21 +94,34 @@ int Warden::CheckCollisionAll()
 
 	for(itr; itr != this->entities.end(); itr++)
 	{
-		if((*itr)->type != MONSTER || (*itr)->type != PLAYER) continue;
+		if((*itr)->type != MONSTER && (*itr)->type != PLAYER) continue;
 
-		// bounding rectangle
-		bounding_rect.Top = (*itr)->pos.y - Y_TILE_SIZE * 2;
-		bounding_rect.Left = (*itr)->pos.x - X_TILE_SIZE * 2;
-		bounding_rect.Bottom = (*itr)->pos.x + X_TILE_SIZE * 2;
+		// bounding rectangle for checking which objects are close enough to be worth checking
+		// collision against
+		bounding_rect.Top = (*itr)->pos.y - Y_TILE_SIZE;
+		bounding_rect.Left = (*itr)->pos.x - X_TILE_SIZE;
 		bounding_rect.Right = (*itr)->pos.x + Y_TILE_SIZE * 2;
+		bounding_rect.Bottom = (*itr)->pos.x + X_TILE_SIZE * 2;
 
 		for(temp_itr = this->entities.begin(); temp_itr != this->entities.end(); temp_itr++)
 		{
+			// Don't check agains the same object
+			if(itr == temp_itr) continue; 
+
 			if(bounding_rect.Contains((*temp_itr)->GetCenter().x, (*temp_itr)->GetCenter().y))
 			{
-				// check for collision here... again...
-				
+				if((*itr)->rect.Intersects((*temp_itr)->rect))
+				{
+					// act on collide here...
+					(*itr)->sprite->SetImage(this->GetImage("rock"));
+				}
+				else
+				{
+					(*itr)->sprite->SetImage(this->GetImage("test"));
+				}
 			}
 		}
 	}
+
+	return 1;
 }
