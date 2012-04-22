@@ -74,12 +74,21 @@ int Warden::DrawAll(sf::RenderTarget *rt)
 	return 1;
 }
 
-int Warden::UpdateAll()
+int Warden::UpdateAll(InputHandler *input)
 {
 	std::vector<Entity *>::iterator itr = this->entities.begin();
+
 	for(itr; itr != this->entities.end(); itr++)
 	{
-		(*itr)->Update();
+		switch((*itr)->type)
+		{
+		case PLAYER:
+			(dynamic_cast<Player*>(*itr))->Update(input, this);
+			break;
+		case MONSTER:
+			(dynamic_cast<Monster*>(*itr))->Update(input, this);
+			break;
+		}
 	}
 	CheckCollisionAll();
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "settings.h"
 #include "Entity.h"
+#include "InputHandler.h"
 
 //typedef void (*monsterAction)(Monster);
 
@@ -15,7 +16,8 @@ public:
 
 	void Init();
 	int Draw(sf::RenderTarget * rt) const;
-	int Update(void );
+	int Update();
+	int Update(InputHandler *input, void *warden);
 	int SetImage(sf::Image *);
 
 	void resetStages();

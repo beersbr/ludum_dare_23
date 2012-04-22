@@ -30,9 +30,32 @@ int Player::SetImage(sf::Image *img)
 	return 1;
 }
 
-int Player::Update(void )
+int Player::Update()
 {
 	Entity::Update();
+	return true;
+}
+
+int Player::Update(InputHandler *input, void *warden)
+{
+	Entity::Update();
+
+	if(input->KeyIsDown(sf::Key::W))
+	{
+		this->ay -= 0.8;
+	}
+	if(input->KeyIsDown(sf::Key::S))
+	{
+		this->ay += 0.8;
+	}
+	if(input->KeyIsDown(sf::Key::A))
+	{
+		this->ax -= 0.8;
+	}
+	if(input->KeyIsDown(sf::Key::D))
+	{
+		this->ax += 0.8;
+	}
 
 	this->pos.x += (this->ax *= this->friction);
 	this->pos.y += (this->ay *= this->friction);

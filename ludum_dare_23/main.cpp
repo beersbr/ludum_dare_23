@@ -12,10 +12,6 @@
 #include <iostream>
 #include <fstream>
 
-#if DEBUG
-#include <d
-#endif
-
 int main()
 {
 	sf::RenderWindow App(sf::VideoMode(REZ_X, REZ_Y, 32), WINDOW_TITLE);
@@ -39,9 +35,7 @@ int main()
 	warden->LoadImage("media_assets\\gman.png", "mon");
 	warden->LoadImage("media_assets\\TestSprite.png", "test");
 
-	/***
-	 *Needs to come after loading images
-	 ***/
+	// Somehow this seems like it needs refactoring but I'm not sure how to go about it.
 	gameMap->GenerateStaticMap();
 	gameMap->GetMapImage(warden);
 
@@ -54,8 +48,8 @@ int main()
 	p->SetZindex(1);
 	Monster *m = new Monster(100, 100);
 
-	p->SetImage(warden->GetImage("test"));
-	m->SetImage(warden->GetImage("mon"));
+	p->SetImage(warden->GetImage("grass"));
+	m->SetImage(warden->GetImage("grass"));
 
 	warden->AddEntity(p);
 	warden->AddEntity(m);
@@ -74,24 +68,7 @@ int main()
 			GameState = STOPPED;
 		}
 
-		if(input->KeyIsDown(sf::Key::W))
-		{
-			p->ay -= 0.8;
-		}
-		if(input->KeyIsDown(sf::Key::S))
-		{
-			p->ay += 0.8;
-		}
-		if(input->KeyIsDown(sf::Key::A))
-		{
-			p->ax -= 0.8;
-		}
-		if(input->KeyIsDown(sf::Key::D))
-		{
-			p->ax += 0.8;
-		}
-
-		warden->UpdateAll();
+		warden->UpdateAll(input);
 		warden->DrawMap(&App);
 		warden->DrawAll(&App);
 

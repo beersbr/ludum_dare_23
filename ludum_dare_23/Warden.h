@@ -11,6 +11,8 @@
 
 #include "Entity.h"
 #include "settings.h"
+#include "Player.h"
+#include "Monster.h"
 
 class Warden
 {
@@ -30,7 +32,7 @@ public:
 	int CheckCollisionAll();
 	int DrawMap(sf::RenderTarget *rt);
 	int DrawAll(sf::RenderTarget *rt);
-	int UpdateAll();
+	int UpdateAll(InputHandler *input);
 
 private:
 	Warden(void);

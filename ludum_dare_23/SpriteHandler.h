@@ -16,7 +16,7 @@ public:
 	SpriteHandler(sf::Image *, int _frame_lag = 5);
 
 	int SetImage(sf::Image *, int _frame_lag = 5);
-	int SetPostition(int x, int y);
+	int SetPostition(int x, int y, float rotation = 0.0);
 	int Draw(sf::RenderTarget *rt);
 
 private:

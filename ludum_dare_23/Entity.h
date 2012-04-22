@@ -15,7 +15,7 @@ public:
 	~Entity(void);
 
 	virtual int Draw(sf::RenderTarget *rt) const = 0;
-	virtual int Update(void );
+	virtual int Update();
 	virtual bool HasCollision(Entity *) const;
 
 	int SetZindex(int idx);

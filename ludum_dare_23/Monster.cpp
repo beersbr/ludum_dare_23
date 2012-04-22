@@ -49,6 +49,12 @@ int Monster::SetImage(sf::Image *img)
 int Monster::Update()
 {
 	Entity::Update();
+	return 0;
+}
+
+int Monster::Update(InputHandler *input, void *warden)
+{
+	Entity::Update();
 
 	//Keep calling the current actions, they'll pass eachother off.
 	currentAction(this);
@@ -56,7 +62,7 @@ int Monster::Update()
 		return 0;
 	this->pos.x += (this->ax *= this->friction);
 	this->pos.y += (this->ay *= this->friction);
-	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y));
+	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y), 0);
 	return 0;
 }
 

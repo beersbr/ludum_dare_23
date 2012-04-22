@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SpriteHandler.h"
+#include "InputHandler.h"
 #include "settings.h"
 #include "Entity.h"
 
@@ -12,7 +13,8 @@ public:
 	~Player(void);
 
 	int Draw(sf::RenderTarget *rt) const;
-	int Update(void );
+	int Update();
+	int Update(InputHandler *input, void *warden);
 
 	int SetImage(sf::Image *);
 };

@@ -67,12 +67,11 @@ int SpriteHandler::Draw(sf::RenderTarget *rt)
 }
 
 
-int SpriteHandler::SetPostition(int x, int y)
+int SpriteHandler::SetPostition(int x, int y, float rotation)
 {
-	//if( x < 0 || x > REZ_X || y < 0 || y > REZ_Y) return 0;
-
 	this->sprite.SetX(x);
 	this->sprite.SetY(y);
+	this->sprite.SetRotation(rotation);
 
 	return 1;
 }
