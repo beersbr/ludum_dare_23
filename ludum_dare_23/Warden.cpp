@@ -105,7 +105,7 @@ int Warden::CheckCollisionAll()
 			if(bounding_rect.Contains((*temp_itr)->GetCenter().x, (*temp_itr)->GetCenter().y))
 			{
 				// check for collision here... again...
-				//if(bounding_rect.Intersects(
+				
 			}
 		}
 	}

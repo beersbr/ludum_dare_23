@@ -32,6 +32,8 @@ int Player::SetImage(sf::Image *img)
 
 int Player::Update(void )
 {
+	Entity::Update();
+
 	this->pos.x += (this->ax *= this->friction);
 	this->pos.y += (this->ay *= this->friction);
 

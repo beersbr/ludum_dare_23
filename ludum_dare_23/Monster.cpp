@@ -48,6 +48,8 @@ int Monster::SetImage(sf::Image *img)
 
 int Monster::Update()
 {
+	Entity::Update();
+
 	//Keep calling the current actions, they'll pass eachother off.
 	currentAction(this);
 	if(!stopMoving)
