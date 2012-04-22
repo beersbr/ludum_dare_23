@@ -60,10 +60,12 @@ int Monster::Update(InputHandler *input, void *warden)
 	currentAction(this);
 	if(!stopMoving)
 		return 0;
+
 	this->pos.x += (this->ax *= this->friction);
 	this->pos.y += (this->ay *= this->friction);
-	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y), 0);
-	return 0;
+	this->curRotation += 0.2f;
+	this->sprite->SetPostition(static_cast<int>(this->pos.x), static_cast<int>(this->pos.y), this->curRotation);
+	return 1;
 }
 
 //Need to figure out when stages reset

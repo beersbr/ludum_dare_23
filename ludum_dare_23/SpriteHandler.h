@@ -6,6 +6,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
+// Perhaps this should inherit from sf::Sprite and not wrape it... TODO
+
 class SpriteHandler
 {
 public:
@@ -18,6 +20,7 @@ public:
 	int SetImage(sf::Image *, int _frame_lag = 5);
 	int SetPostition(int x, int y, float rotation = 0.0);
 	int Draw(sf::RenderTarget *rt);
+	int SetCenter(int x, int y);
 
 private:
 	sf::Sprite sprite;

@@ -22,6 +22,7 @@ SpriteHandler::SpriteHandler(sf::Image *img, int _frame_lag)
 		this->frames = img->GetWidth() % X_TILE_SIZE;
 		if(!this->frames)
 			frames++;
+
 		this->frame_lag = _frame_lag;
 		this->current_frame = 0;
 		this->frame_lag_count = 0;
@@ -29,6 +30,8 @@ SpriteHandler::SpriteHandler(sf::Image *img, int _frame_lag)
 		this->rect.Left = 0;
 		this->rect.Right = X_TILE_SIZE;
 		this->rect.Bottom = Y_TILE_SIZE;
+
+		this->SetCenter(X_TILE_SIZE / 2, Y_TILE_SIZE / 2);
 
 		sprite.SetImage(*img);
 	}
@@ -73,6 +76,12 @@ int SpriteHandler::SetPostition(int x, int y, float rotation)
 	this->sprite.SetY(y);
 	this->sprite.SetRotation(rotation);
 
+	return 1;
+}
+
+int SpriteHandler::SetCenter(int x, int y)
+{
+	this->sprite.SetCenter(x, y);
 	return 1;
 }
 

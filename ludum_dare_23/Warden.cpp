@@ -126,7 +126,7 @@ int Warden::CheckCollisionAll()
 				}
 				else
 				{
-					(*itr)->sprite->SetImage(this->GetImage("test"));
+					(*itr)->sprite->SetImage(this->GetImage("grass"));
 				}
 			}
 		}

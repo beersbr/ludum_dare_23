@@ -16,7 +16,7 @@ const int REZ_Y = 800;
 
 const int FRAME_LIMIT = 60;
 
-const std::string WINDOW_TITLE = "Ludum Dare <TO BE NAMED>";
+const std::string WINDOW_TITLE = "Ludum Dare 23 <TO BE NAMED>";
 
 enum GAME_STATE{STOPPED = 0, RUNNING, PAUSED, LOADING};
 enum ENTITY_TYPE{BASE = 0, ITEM, PLAYER, MONSTER};
