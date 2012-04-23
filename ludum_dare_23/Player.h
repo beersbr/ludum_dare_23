@@ -4,6 +4,7 @@
 #include "InputHandler.h"
 #include "settings.h"
 #include "Entity.h"
+#include <vector>
 
 class Player : public Entity
 {
@@ -14,7 +15,7 @@ public:
 
 	int Draw(sf::RenderTarget *rt) const;
 	int Update();
-	int Update(InputHandler *input, void *warden);
+	int Update(InputHandler *input, std::vector<Entity *> entities);
 
 	int SetImage(sf::Image *);
 };

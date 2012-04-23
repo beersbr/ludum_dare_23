@@ -74,19 +74,36 @@ int Warden::DrawAll(sf::RenderTarget *rt)
 	return 1;
 }
 
+// TODO create a collision hash map of the screen so that getting appropriate collidable items is not so 
+// painful to the CPU
+
 int Warden::UpdateAll(InputHandler *input)
 {
 	std::vector<Entity *>::iterator itr = this->entities.begin();
+	sf::Rect<int> bounding_rect;
 
 	for(itr; itr != this->entities.end(); itr++)
 	{
+		// TODO Get the bounding rectangle for the current item. In this case the bounding rectangle would just get items that are
+		// close enough to be checked and acted upon when there is a collision.
+
+		bounding_rect.Top = (*itr)->pos.y - Y_TILE_SIZE;
+		bounding_rect.Left = (*itr)->pos.x - X_TILE_SIZE;
+		bounding_rect.Right = (*itr)->pos.x + Y_TILE_SIZE * 2;
+		bounding_rect.Bottom = (*itr)->pos.x + X_TILE_SIZE * 2;
+
+		for(std::vector<Entity *>::iterator i = this->entities.begin(); i != this->entities.end(); i++)
+		{
+
+		}
+
 		switch((*itr)->type)
 		{
 		case PLAYER:
-			(dynamic_cast<Player*>(*itr))->Update(input, this);
+			(dynamic_cast<Player*>(*itr))->Update(input, NULL);
 			break;
 		case MONSTER:
-			(dynamic_cast<Monster*>(*itr))->Update(input, this);
+			(dynamic_cast<Monster*>(*itr))->Update(input, NULL);
 			break;
 		}
 	}
@@ -95,6 +112,9 @@ int Warden::UpdateAll(InputHandler *input)
 	return 1;
 }
 
+
+// This function is now deprecated and will be moved after a few more commits. It will stay until we are certain
+// that it is not needed.
 int Warden::CheckCollisionAll()
 {
 	std::vector<Entity *>::iterator itr = this->entities.begin(), temp_itr;

@@ -36,7 +36,7 @@ int Player::Update()
 	return true;
 }
 
-int Player::Update(InputHandler *input, void *warden)
+int Player::Update(InputHandler *input, std::vector<Entity *> entities)
 {
 	Entity::Update();
 

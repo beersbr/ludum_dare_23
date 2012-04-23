@@ -52,7 +52,7 @@ int Monster::Update()
 	return 0;
 }
 
-int Monster::Update(InputHandler *input, void *warden)
+int Monster::Update(InputHandler *input, std::vector<Entity *> entities)
 {
 	Entity::Update();
 
