@@ -16,7 +16,9 @@ int main()
 {
 	sf::RenderWindow App(sf::VideoMode(REZ_X, REZ_Y, 32), WINDOW_TITLE);
 	App.SetFramerateLimit(FRAME_LIMIT);
+	sf::View mainView(sf::FloatRect(0, 0, 1400, 1300));
 
+	App.SetView(mainView);
 	// START GAME SETUP
 	
 	//Seed that random generator
